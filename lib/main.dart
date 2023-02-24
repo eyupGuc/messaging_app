@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_app/mesages_pages.dart';
+import 'package:messaging_app/students_pages.dart';
+import 'package:messaging_app/teachers_pages.dart';
 
 void main() {
   runApp(const MessagingApp());
@@ -49,18 +52,25 @@ class MyHomePage extends StatelessWidget {
               ),
             ),
             ListTile(
-              title: Text('Students'),
-              onTap: () {},
-            ),
-            ListTile(
-              title: Text('Teachers'),
+              title: const Text('Students'),
               onTap: () {
-                // Do something
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const StudentsPages()));
               },
             ),
             ListTile(
-              title: Text("Messages"),
-              onTap: () {},
+              title: const Text('Teachers'),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const TeachersPage()));
+              },
+            ),
+            ListTile(
+              title: const Text("Messages"),
+              onTap: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const MessagesPage()));
+              },
             )
           ],
         ),
