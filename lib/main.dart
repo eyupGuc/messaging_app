@@ -19,13 +19,13 @@ class MessagingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHomePage(title: 'Messaging App Home Page'),
+      home:const  MyHomePage(title: 'Messaging App Home Page'),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key, required this.title});
+ const  MyHomePage({super.key, required this.title});
 
   final String title;
 
@@ -46,10 +46,10 @@ class MyHomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             const DrawerHeader(
-              child: Text('Student Name'),
               decoration: BoxDecoration(
                 color: Colors.blue,
               ),
+              child: Text('Student Name'),
             ),
             ListTile(
               title: const Text('Students'),
