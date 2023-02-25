@@ -16,7 +16,7 @@ class StudentsPages extends StatelessWidget {
           child: Center(
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 8.0, horizontal: 32),
-              child: Text("10 Students"),
+              child: Text("10 Teachers"),
             ),
           ),
         ),
