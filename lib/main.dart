@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:messaging_app/mesages_pages.dart';
-import 'package:messaging_app/students_pages.dart';
-import 'package:messaging_app/teachers_pages.dart';
+import 'package:messaging_app/pages/mesages_pages.dart';
+import 'package:messaging_app/pages/students_pages.dart';
+import 'package:messaging_app/pages/teachers_pages.dart';
+import 'package:messaging_app/repository/message_repository.dart';
+import 'package:messaging_app/repository/students_repository.dart';
+import 'package:messaging_app/repository/teachers_repository.dart';
 
 void main() {
   runApp(const MessagingApp());
@@ -19,21 +22,29 @@ class MessagingApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home:const  MyHomePage(title: 'Messaging App Home Page'),
+      home: const MyHomePage(title: 'Messaging App Home Page'),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
- const  MyHomePage({super.key, required this.title});
+class MyHomePage extends StatefulWidget {
+  const MyHomePage({super.key, required this.title});
 
   final String title;
 
   @override
+  State<MyHomePage> createState() => _MyHomePageState();
+}
+
+class _MyHomePageState extends State<MyHomePage> {
+  MessageRepository messageRepository = MessageRepository();
+  TeachersRepository teachersRepository = TeachersRepository();
+  StudentsRepository studentsRepository = StudentsRepository();
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(title),
+        title: Text(widget.title),
       ),
       body: Center(
         child: Column(
