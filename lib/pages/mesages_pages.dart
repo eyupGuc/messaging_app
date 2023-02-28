@@ -1,9 +1,11 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:messaging_app/repository/message_repository.dart';
 
 class MessagesPage extends StatelessWidget {
-  const MessagesPage({super.key});
+  final MessageRepository messageRepository;
+  const MessagesPage(this.messageRepository, {super.key});
 
   @override
   Widget build(BuildContext context) {

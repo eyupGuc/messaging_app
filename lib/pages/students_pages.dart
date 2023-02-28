@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_app/repository/students_repository.dart';
 
 class StudentsPages extends StatelessWidget {
-  const StudentsPages({super.key});
+  StudentsRepository studentsRepository;
+  StudentsPages(this.studentsRepository, {super.key});
 
   @override
   Widget build(BuildContext context) {

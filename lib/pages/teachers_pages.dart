@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:messaging_app/repository/teachers_repository.dart';
 
 class TeachersPage extends StatelessWidget {
-  const TeachersPage({super.key});
+  final TeachersRepository teachersRepository;
+  const TeachersPage(this.teachersRepository, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +27,6 @@ class TeachersPage extends StatelessWidget {
             itemBuilder: (context, index) => ListTile(
               leading: const Icon(Icons.person),
               title: const Text("Ali"),
-              
             ),
             separatorBuilder: (context, index) => const Divider(),
             itemCount: 25,

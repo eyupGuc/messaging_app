@@ -49,7 +49,19 @@ class _MyHomePageState extends State<MyHomePage> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+          children: <Widget>[
+            TextButton(
+              onPressed: () {_gotoMessages(context);},
+              child: Text("${messageRepository.messages.length} new message"),
+            ),
+            TextButton(
+              onPressed: () {_gotoStudents(context);},
+              child: Text("${studentsRepository.students.length} student"),
+            ),
+            TextButton(
+                onPressed: () {_gotoTeachers(context);},
+                child: Text("${teachersRepository.teachers.length} teacher"))
+          ],
         ),
       ),
       drawer: Drawer(
@@ -66,26 +78,44 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('Students'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const StudentsPages()));
+                    builder: (context) =>  StudentsPages(studentsRepository)));
               },
             ),
             ListTile(
               title: const Text('Teachers'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const TeachersPage()));
+                    builder: (context) =>  TeachersPage(teachersRepository)));
               },
             ),
             ListTile(
               title: const Text("Messages"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const MessagesPage()));
+                    builder: (context) =>  MessagesPage(messageRepository)));
               },
             )
           ],
         ),
       ),
     );
+  }
+  
+  void _gotoMessages(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+      return  MessagesPage(messageRepository);
+    }));
+  }
+  
+  void _gotoStudents(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+      return StudentsPages(studentsRepository);
+    }));
+  }
+  
+  void _gotoTeachers(BuildContext context) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+      return TeachersPage(teachersRepository);
+    }));
   }
 }
