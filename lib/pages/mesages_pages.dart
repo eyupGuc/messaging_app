@@ -3,10 +3,20 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:messaging_app/repository/message_repository.dart';
 
-class MessagesPage extends StatelessWidget {
+class MessagesPage extends StatefulWidget {
   final MessageRepository messageRepository;
   const MessagesPage(this.messageRepository, {super.key});
 
+  @override
+  State<MessagesPage> createState() => _MessagesPageState();
+}
+
+class _MessagesPageState extends State<MessagesPage> {
+  @override
+  void initState() {
+  widget.messageRepository.yeniMesajSayisi=0;
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,31 +26,11 @@ class MessagesPage extends StatelessWidget {
         body: Column(
           children: [
             Expanded(
-              child: ListView.builder(reverse: true,
+              child: ListView.builder(
+                reverse: true,
+                itemCount: widget.messageRepository.messages.length,
                 itemBuilder: ((context, index) {
-                  bool benMiyim = Random().nextBool();
-                  return Align(
-                    alignment:
-                        benMiyim ? Alignment.centerRight : Alignment.centerLeft,
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 8.0, vertical: 16),
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(15)),
-                            border: Border.all(
-                              color: Colors.grey,
-                              width: 2,
-                            ),
-                            color: Colors.purple.shade300),
-                        child: const Padding(
-                          padding: EdgeInsets.all(20.0),
-                          child: Text("Merhaba dostum nerdesin?"),
-                        ),
-                      ),
-                    ),
-                  );
+                  return MesajGorunumu(widget.messageRepository.messages[widget.messageRepository.messages.length-index-1 ]);
                 }),
               ),
             ),
@@ -74,5 +64,38 @@ class MessagesPage extends StatelessWidget {
             )
           ],
         ));
+  }
+}
+
+class MesajGorunumu extends StatelessWidget {
+  Message message;
+  MesajGorunumu(
+    this.message, {
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Align(
+      alignment: message.gonderen == "Ali"
+          ? Alignment.centerRight
+          : Alignment.centerLeft,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 16),
+        child: DecoratedBox(
+          decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(Radius.circular(15)),
+              border: Border.all(
+                color: Colors.grey,
+                width: 2,
+              ),
+              color: Colors.purple.shade300),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Text(message.yazi),
+          ),
+        ),
+      ),
+    );
   }
 }

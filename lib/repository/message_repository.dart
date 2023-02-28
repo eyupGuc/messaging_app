@@ -7,6 +7,8 @@ class MessageRepository {
     Message("Evet", "Ali", DateTime.now().subtract(const Duration(minutes: 1))),
     Message("Nasılsın", "Ayşe", DateTime.now())
   ];
+
+  int yeniMesajSayisi=4;
 }
 
 class Message {

@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             TextButton(
               onPressed: () {_gotoMessages(context);},
-              child: Text("${messageRepository.messages.length} new message"),
+              child: Text("${messageRepository.yeniMesajSayisi} new message"),
             ),
             TextButton(
               onPressed: () {_gotoStudents(context);},
