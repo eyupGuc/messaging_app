@@ -1,8 +1,22 @@
 class StudentsRepository {
-  List<Student> students = [
+  final students = [
     Student("Ali", "Yılmaz", 34, "Erkek"),
     Student("Ayşe", "Kara", 32, "Kadın"),
   ];
+
+  final Set<Student> sevdiklerim = {};
+
+  void sev(Student ogrenci, bool seviyorMuyum) {
+    if (seviyorMuyum) {
+      sevdiklerim.add(ogrenci);
+    } else {
+      sevdiklerim.remove(ogrenci);
+    }
+  }
+
+  bool seviyorMuyum(Student ogrenci) {
+    return sevdiklerim.contains(ogrenci);
+  }
 }
 
 class Student {

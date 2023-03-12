@@ -51,15 +51,21 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             TextButton(
-              onPressed: () {_gotoMessages(context);},
+              onPressed: () {
+                _gotoMessages(context);
+              },
               child: Text("${messageRepository.yeniMesajSayisi} new message"),
             ),
             TextButton(
-              onPressed: () {_gotoStudents(context);},
+              onPressed: () {
+                _gotoStudents(context);
+              },
               child: Text("${studentsRepository.students.length} student"),
             ),
             TextButton(
-                onPressed: () {_gotoTeachers(context);},
+                onPressed: () {
+                  _gotoTeachers(context);
+                },
                 child: Text("${teachersRepository.teachers.length} teacher"))
           ],
         ),
@@ -78,21 +84,21 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('Students'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  StudentsPages(studentsRepository)));
+                    builder: (context) => StudentsPages(studentsRepository)));
               },
             ),
             ListTile(
               title: const Text('Teachers'),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  TeachersPage(teachersRepository)));
+                    builder: (context) => TeachersPage(teachersRepository)));
               },
             ),
             ListTile(
               title: const Text("Messages"),
               onTap: () {
                 Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) =>  MessagesPage(messageRepository)));
+                    builder: (context) => MessagesPage(messageRepository)));
               },
             )
           ],
@@ -100,21 +106,22 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
-  
-  void _gotoMessages(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context){
-      return  MessagesPage(messageRepository);
+
+  Future<void> _gotoMessages(BuildContext context) async {
+    await Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+      return MessagesPage(messageRepository);
     }));
+    setState(() {});
   }
-  
+
   void _gotoStudents(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return StudentsPages(studentsRepository);
     }));
   }
-  
+
   void _gotoTeachers(BuildContext context) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context){
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) {
       return TeachersPage(teachersRepository);
     }));
   }
